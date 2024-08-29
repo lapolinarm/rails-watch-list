@@ -1,0 +1,7 @@
+<h2>New Bookmark</h2>
+
+<%= simple_form_for([@list, @bookmark]) do |f| %>
+  <%= f.input :movie, collection: Movie.all, prompt: "Choose a movie" %>
+  <%= f.input :comment %>
+  <%= f.button :submit %>
+<% end %>

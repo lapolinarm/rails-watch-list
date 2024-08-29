@@ -1,1 +1,7 @@
-<h1>Welcome to new list</h1>
+<h1>Create a New Movie List</h1>
+<%= simple_form_for @list do |f| %>
+  <div class="form-group">
+    <%= f.input :name, label: 'List name' %>
+  </div>
+  <%= f.button :submit, 'Create List', class: 'btn btn-success' %>
+<% end %>
