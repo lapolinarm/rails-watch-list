@@ -1,2 +1,14 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.banner {
+  background-color: #343a40; // Fondo oscuro para el banner
+}
+
+.container {
+  max-width: 1140px; // Puedes ajustar el ancho máximo si es necesario
+}
+
+.card-title {
+  font-size: 1.5rem; // Tamaño del texto en las cards
+}

@@ -1,9 +1,31 @@
-<h1><%= @list.name %></h1>
-<ul>
-  <% @list.movies.each do |movie| %>
-    <li><%= movie.title %></li>
-  <% end %>
-</ul>
+<div class="banner text-center d-flex align-items-center justify-content-center w-100 position-relative" style="min-height: 300px; background-color: #343a40;">
+  <h1 class="text-white fw-bold"><%= @list.name %></h1>
+  <div class="movie-count position-absolute top-0 end-0 m-3 p-2 rounded" style="background-color: #f9c74f; color: white; font-weight: bold;">
+    <%= pluralize(@bookmarks.count, 'movie') %>
+  </div>
+</div>
 
-<%= link_to 'Edit List', edit_list_path(@list), class: 'btn btn-primary' %>
-<%= link_to 'Back to Lists', lists_path, class: 'btn btn-secondary' %>
+<div class="container my-4">
+  <div class="row">
+    <% @bookmarks.each do |bookmark| %>
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100">
+          <img src="<%= bookmark.movie.poster_url %>" class="card-img-top" alt="<%= bookmark.movie.title %> Poster" style="height: 200px; object-fit: cover;">
+          <div class="card-body p-3">
+            <h5 class="card-title fw-bold text-truncate"><%= bookmark.movie.title %></h5>
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="badge bg-secondary"><%= bookmark.movie.rating %> <i class="fa fa-star"></i></span>
+              <%= link_to 'Delete', bookmark_path(bookmark), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' %>
+            </div>
+            <p class="card-text small text-muted"><%= bookmark.movie.overview %></p>
+            <p class="card-text"><i class="fa fa-comment"></i> <%= bookmark.comment %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="d-flex justify-content-between mt-4">
+    <%= link_to 'Edit List', edit_list_path(@list), class: 'btn btn-primary' %>
+    <%= link_to 'Back to Lists', lists_path, class: 'btn btn-secondary' %>
+  </div>
+</div>
