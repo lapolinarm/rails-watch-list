@@ -15,7 +15,7 @@
             <h5 class="card-title fw-bold text-truncate"><%= bookmark.movie.title %></h5>
             <div class="d-flex justify-content-between align-items-center mb-2">
               <span class="badge bg-secondary"><%= bookmark.movie.rating %> <i class="fa fa-star"></i></span>
-              <%= link_to 'Delete', bookmark_path(bookmark), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' %>
+              <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'text-danger' %>
             </div>
             <p class="card-text small text-muted"><%= bookmark.movie.overview %></p>
             <p class="card-text"><i class="fa fa-comment"></i> <%= bookmark.comment %></p>
